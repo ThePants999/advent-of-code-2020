@@ -1,10 +1,3 @@
-#![warn(
-    clippy::all,
-    clippy::pedantic,
-    clippy::nursery,
-    clippy::cargo,
-)]
-
 mod utils;
 mod day1;
 
