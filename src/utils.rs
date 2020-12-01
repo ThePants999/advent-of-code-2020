@@ -1,8 +1,6 @@
-use std::io::Read;
+static INPUTS_DIR: &str = "inputs";
 
 pub fn load_inputs(day: usize) -> Vec<String> {
-    let mut file = std::fs::File::open(format!("inputs/{}", day)).expect("Can't open input file");
-    let mut input = String::new();
-    file.read_to_string(&mut input).expect("Can't read input file");
-    input.lines().map(|line| line.to_string()).collect()
+    let input = std::fs::read_to_string(format!("{}/{}", INPUTS_DIR, day)).expect("Can't open/read input file");
+    input.lines().map(std::string::ToString::to_string).collect()
 }
