@@ -1,38 +1,25 @@
+use itertools::Itertools;
+
 static TARGET: u64 = 2020;
 
 pub fn day1(input_lines: &[String]) -> (u64, u64) {
     let expenses: Vec<u64> = input_lines.iter().map(|line| line.parse::<u64>().expect("Failed to parse input")).collect();
-    let (expense_one, expense_two) = find_two_expenses_that_sum_to(&expenses, TARGET);
-    let part1 = expense_one * expense_two;
-    let (expense_one, expense_two, expense_three) = find_three_expenses_that_sum_to(&expenses, TARGET);
-    let part2 = expense_one * expense_two * expense_three;
+    let part1 = multiply_expenses(&find_n_expenses_that_sum_to(&expenses, 2, TARGET).expect("Failed to solve part 1"));
+    let part2 = multiply_expenses(&find_n_expenses_that_sum_to(&expenses, 3, TARGET).expect("Failed to solve part 2"));
     (part1, part2) 
 }
 
-fn find_two_expenses_that_sum_to(expenses: &Vec<u64>, target: u64) -> (u64, u64) {
-    for i in 0..expenses.len() {
-        for j in 0..expenses.len() {
-            if i == j { continue; }
-            if expenses[i] + expenses[j] == target {
-                return (expenses[i], expenses[j])
-            }
+fn find_n_expenses_that_sum_to(expenses: &[u64], n: usize, target: u64) -> Option<Vec<&u64>> {
+    for combo in expenses.iter().combinations(n) {
+        let sum = combo.iter().fold(0, |acc, x| acc + **x);
+        if sum == target {
+            return Some(combo)
         }
     }
-    panic!("Couldn't solve part 1");
+
+    None
 }
 
-fn find_three_expenses_that_sum_to(expenses: &Vec<u64>, target: u64) -> (u64, u64, u64) {
-    for i in 0..expenses.len() {
-        for j in 0..expenses.len() {
-            if i == j { continue; }
-            for k in 0..expenses.len() {
-                if i == k { continue; }
-                if j == k { continue; }
-                if expenses[i] + expenses[j] + expenses[k] == target {
-                    return (expenses[i], expenses[j], expenses[k])
-                }
-            }
-        }
-    }
-    panic!("Couldn't solve part 2");
+fn multiply_expenses(expenses: &[&u64]) -> u64 {
+    expenses.iter().fold(1, |acc, x| acc * **x)
 }
