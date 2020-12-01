@@ -10,14 +10,7 @@ pub fn day1(input_lines: &[String]) -> (u64, u64) {
 }
 
 fn find_n_expenses_that_sum_to(expenses: &[u64], n: usize, target: u64) -> Option<Vec<&u64>> {
-    for combo in expenses.iter().combinations(n) {
-        let sum = combo.iter().fold(0, |acc, x| acc + **x);
-        if sum == target {
-            return Some(combo)
-        }
-    }
-
-    None
+    expenses.iter().combinations(n).find(|combo| combo.iter().copied().sum::<u64>() == target)
 }
 
 fn multiply_expenses(expenses: &[&u64]) -> u64 {

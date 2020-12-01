@@ -4,7 +4,6 @@ version = "0.0.1"
 authors = ["Chris Paterson <chris.paterson@metaswitch.com>"]
 description = "My implementation of the Advent of Code 2020 in Rust"
 readme = "README.md"
-license = "CC0-1.0"
 license-file = "LICENSE"
 repository = "https://github.com/ThePants999/advent-of-code-2020"
 keywords = ["advent of code","aoc","2020"]
