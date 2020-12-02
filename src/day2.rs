@@ -9,6 +9,7 @@ struct PasswordAndPolicy<'a> {
 
 impl<'a> PasswordAndPolicy<'a> {
     fn new(input_line: &'a str) -> Self {
+        // Yeah, this could be regex, but speeeeeeeeeed
         let dash_pos = input_line.find('-').expect("Invalid password policy: no dash");
         let num_one = input_line[0..dash_pos].parse::<usize>().expect("Invalid password policy: minimum count not integer");
         let input_line = &input_line[dash_pos + 1..];
