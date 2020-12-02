@@ -25,7 +25,7 @@ impl<'a> PasswordAndPolicy<'a> {
 
 pub fn day2(input_lines: &[String]) -> (u64, u64) {
     let passwords: Vec<PasswordAndPolicy> = input_lines.iter().map(|line| parse_password(line)).collect();
-	let part1 = passwords.iter().filter(|password| password.valid_for_part_one()).count() as u64;
+    let part1 = passwords.iter().filter(|password| password.valid_for_part_one()).count() as u64;
     let part2 = passwords.iter().filter(|password| password.valid_for_part_two()).count() as u64;
     (part1, part2)
 }
