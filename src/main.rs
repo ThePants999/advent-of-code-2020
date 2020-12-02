@@ -1,10 +1,14 @@
 mod utils;
 mod day1;
+mod day2;
 
 use std::env;
 
 type DayFunction = fn(&[String]) -> (u64, u64);
-static DAY_FUNCTIONS: [DayFunction; 1] = [day1::day1];
+static DAY_FUNCTIONS: [DayFunction; 2] = [
+    day1::day1,
+    day2::day2,
+];
 
 fn main() {
     let args: Vec<String> = env::args().collect();
