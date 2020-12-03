@@ -16,5 +16,5 @@ fn find_product_of_expenses_that_sum_to(expenses: &[u64], subset_size: usize, ta
         .iter()
         .combinations(subset_size)
         .find(|combo| combo.iter().copied().sum::<u64>() == target)
-        .and_then(|combo| Some(combo.iter().copied().product()))
+        .map(|combo| combo.iter().copied().product())
 }
