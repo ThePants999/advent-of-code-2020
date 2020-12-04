@@ -6,7 +6,7 @@ pub fn day3(input_lines: &[String]) -> (u64, u64) {
 }
 
 struct Forest {
-    tree_positions: Vec<bool>,
+    tree_positions: Vec<u64>,
     pattern_width: usize,
     pattern_height: usize,
 }
@@ -19,9 +19,8 @@ impl Forest {
         for line in input_lines {
             for c in line.chars() {
                 match c {
-                    '#' => tree_positions.push(true),
-                    '.' => tree_positions.push(false),
-                    _ => panic!("Invalid input character")
+                    '#' => tree_positions.push(1),
+                    _ => tree_positions.push(0)
                 };
             }
         }
@@ -34,7 +33,7 @@ impl Forest {
         let mut position_x: usize = 0;
         let mut position_y: usize = 0;
         while position_y < self.pattern_height {
-            if self.tree_positions[(position_y * self.pattern_width) + (position_x % self.pattern_width)] { tree_count += 1; }
+            tree_count += self.tree_positions[(position_y * self.pattern_width) + (position_x % self.pattern_width)];
             position_x += delta_x;
             position_y += delta_y;
         }
