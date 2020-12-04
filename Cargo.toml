@@ -14,3 +14,8 @@ edition = "2018"
 
 [dependencies]
 itertools = "0.9"
+regex = "1"
+lazy_static = "1"
+strum = "0.20"
+strum_macros = "0.20"
+hex = "0.4"
