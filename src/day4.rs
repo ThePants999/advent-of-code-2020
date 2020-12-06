@@ -1,27 +1,13 @@
 use regex::Regex;
 use std::str::FromStr;
 use std::fmt::{self, Display};
+use crate::utils;
 
 pub fn day4(input_lines: &[String]) -> (u64, u64) {
-    let passports = parse_passports(input_lines);
+    let passports: Vec<Passport> = utils::group_lines_split_by_empty_line(input_lines).iter().map(|group| Passport::decode(group)).collect();
     let part1 = passports.iter().filter(|passport| passport.all_fields_present()).count() as u64;
     let part2 = passports.iter().filter(|passport| passport.all_fields_valid()).count() as u64;
     (part1,part2)
-}
-
-fn parse_passports(input_lines: &[String]) -> Vec<Passport> {
-    let mut passports: Vec<Passport> = Vec::new();
-    let mut passport = Passport::new();
-    for line in input_lines {
-        if line.is_empty() {
-            passports.push(passport);
-            passport = Passport::new();
-        } else {
-            passport.parse_line(line);
-        }
-    }
-    passports.push(passport);
-    passports
 }
 
 enum FieldState<T> {
@@ -118,8 +104,8 @@ impl Display for Passport {
 }
 
 impl Passport {
-    fn new() -> Self {
-        Passport {
+    fn decode(input_lines: &[String]) -> Self {
+        let mut passport = Self {
             raw: "".to_string(),
             byr: FieldState::Missing,
             iyr: FieldState::Missing,
@@ -128,7 +114,13 @@ impl Passport {
             hcl: FieldState::Missing,
             ecl: FieldState::Missing,
             pid: FieldState::Missing,
+        };
+
+        for line in input_lines {
+            passport.parse_line(line);
         }
+
+        passport
     }
 
     fn parse_line(&mut self, input: &str) {
