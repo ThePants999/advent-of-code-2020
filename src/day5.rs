@@ -1,7 +1,7 @@
 pub fn day5(input_lines: &[String]) -> (u64, u64) {
-    let mut passes: Vec<u64> = input_lines.into_iter().map(|line| BoardingPass::decode(line)).map(|pass| pass.seat_id()).collect();
-    passes.sort();
-    let part1 = *passes.get(passes.len() - 1).unwrap();
+    let mut passes: Vec<u64> = input_lines.iter().map(|line| BoardingPass::decode(line)).map(|pass| pass.seat_id()).collect();
+    passes.sort_unstable();
+    let part1 = *passes.last().unwrap();
     let part2 = passes.into_iter().fold(0, |current, new| {
         if (new == (current + 1)) || (current == 0) {
             new
