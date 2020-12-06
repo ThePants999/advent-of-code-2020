@@ -4,9 +4,6 @@ use std::fmt::{self, Display};
 
 pub fn day4(input_lines: &[String]) -> (u64, u64) {
     let passports = parse_passports(input_lines);
-    for passport in passports.iter().filter(|passport| passport.all_fields_valid()) {
-        println!("{}", passport);
-    }
     let part1 = passports.iter().filter(|passport| passport.all_fields_present()).count() as u64;
     let part2 = passports.iter().filter(|passport| passport.all_fields_valid()).count() as u64;
     (part1,part2)
