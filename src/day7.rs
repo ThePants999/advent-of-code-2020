@@ -12,10 +12,8 @@ pub fn day7(input_lines: &[String]) -> (u64, u64) {
 }
 
 fn traverse_contained_in_tree(bag: &Bag, all_bags: &HashMap<String, Bag>, set: &mut HashSet<String>) {
-    //println!("--------\n{} in {} bags", bag.colour, bag.contained_in.len());
     set.insert(bag.colour.clone());
     for contained_in in &bag.contained_in {
-        //println!("contained in {}", contained_in);
         if !set.contains(contained_in) {
             traverse_contained_in_tree(all_bags.get(contained_in).unwrap(), all_bags, set);
         }
