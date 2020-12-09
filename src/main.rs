@@ -10,11 +10,12 @@ mod day5;
 mod day6;
 mod day7;
 mod day8;
+mod day9;
 
 use std::env;
 
 type DayFunction = fn(&[String]) -> (u64, u64);
-static DAY_FUNCTIONS: [DayFunction; 8] = [
+static DAY_FUNCTIONS: [DayFunction; 9] = [
     day1::day1,
     day2::day2,
     day3::day3,
@@ -23,6 +24,7 @@ static DAY_FUNCTIONS: [DayFunction; 8] = [
     day6::day6,
     day7::day7,
     day8::day8,
+    day9::day9,
 ];
 
 fn main() {
