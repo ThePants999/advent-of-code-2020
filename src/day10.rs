@@ -2,7 +2,7 @@ pub fn day10(input_lines: &[String]) -> (u64, u64) {
     let mut differences: [u64; 4] = [0,0,0,0];
     let mut adapters: Vec<Adapter> = input_lines.iter().map(|line| Adapter { rating: line.parse::<u64>().expect("Invalid input!"), combinations: 0}).collect();
     adapters.push(Adapter {rating: 0, combinations: 1}); // Include the wall socket
-    adapters.sort();
+    adapters.sort_unstable();
     adapters.push(Adapter {rating: adapters.last().unwrap().rating + 3, combinations: 0}); // Include your device's built-in adapter
 
     // Both parts 1 and 2 depend on having a sorted list of adapters.
