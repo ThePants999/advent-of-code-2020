@@ -125,20 +125,6 @@ fn apply_round(grid: &Grid, ruleset: Rulesets) -> Grid {
 
 fn count_adjacent_occupied_seats(grid: &Grid, row: usize, col: usize, ruleset: Rulesets) -> u8 {
     Directions::iter().map(|dir| can_see_occupied_seat(grid, Coordinate { row, col }, dir, ruleset)).sum()
-    // let mut occupied_seats = 0u8;
-    // if row > 0 {
-    //     if col > 0 && grid[row-1][col-1] == States::Occupied { occupied_seats += 1; }
-    //     if grid[row-1][col] == States::Occupied { occupied_seats += 1; }
-    //     if col < (COLS - 1) && grid[row-1][col+1] == States::Occupied { occupied_seats += 1; }
-    // }
-    // if col > 0 && grid[row][col-1] == States::Occupied { occupied_seats += 1; }
-    // if col < (COLS - 1) && grid[row][col+1] == States::Occupied { occupied_seats += 1; }
-    // if row < (ROWS - 1) {
-    //     if col > 0 && grid[row+1][col-1] == States::Occupied { occupied_seats += 1; }
-    //     if grid[row+1][col] == States::Occupied { occupied_seats += 1; }
-    //     if col < (COLS - 1) && grid[row+1][col+1] == States::Occupied { occupied_seats += 1; }
-    // }
-    // occupied_seats
 }
 
 fn can_see_occupied_seat(grid: &Grid, from: Coordinate, dir: Directions, ruleset: Rulesets) -> u8 {
