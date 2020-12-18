@@ -52,11 +52,9 @@ impl PocketDimension {
     fn perform_cycle(&mut self) {
         assert!(self.current_iteration_changes.is_empty());
         self.recursive_perform_cycle(Vec::new());
-        let changes = self.current_iteration_changes.clone();
-        for (pos, active) in changes {
+        for (pos, active) in std::mem::take(&mut self.current_iteration_changes) {
             self.apply_change(pos, active);
         }
-        self.current_iteration_changes.clear();
     }
 
     fn recursive_perform_cycle(&mut self, coords_so_far: Vec<isize>) {
