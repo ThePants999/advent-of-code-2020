@@ -2,6 +2,11 @@ use std::rc::Rc;
 use std::cell::RefCell;
 use std::collections::{HashMap, HashSet};
 
+// "(Remember, you only need to handle the rules you have; building a solution that could handle any
+// hypothetical combination of rules would be significantly more difficult.)"
+//
+// Haha, screw you, I pretty much did it anyway.
+
 pub fn day19(input_lines: &[String]) -> (u64, u64) {
     let mut map: HashMap<usize, Rc<RefCell<Rule>>> = HashMap::new();
     let mut lines_iter = input_lines.iter();
