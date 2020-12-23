@@ -10,7 +10,7 @@
             "type": "cppvsdbg",
             "request": "launch",
             "program": "${workspaceFolder}/target/debug/advent-of-code-2020.exe",
-            "args": ["21"],
+            "args": ["22"],
             "stopAtEntry": false,
             "cwd": "${workspaceFolder}",
             "environment": [],

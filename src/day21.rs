@@ -64,7 +64,7 @@ pub fn day21(input_lines: &[String]) -> (u64, u64) {
                         // This ingredient is no longer a candidate for any of this food's allergens.
                         ingredient.candidate_allergens.retain(|allergen_name| !food.allergens.contains(allergen_name));
                     } else {
-                        // This ingrediate is no longer a candidate for any allergens other than those
+                        // This ingredient is no longer a candidate for any allergens other than those
                         // in this food.
                         ingredient.candidate_allergens.retain(|allergen_name| food.allergens.contains(allergen_name));
                     }
