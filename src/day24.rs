@@ -6,7 +6,6 @@ pub fn day24(input_lines: &[String]) -> (u64, u64) {
     let part1 = exhibit.black_tiles.len() as u64;
     for day in 1..=100 {
         exhibit.apply_day_process();
-        println!("Day {}: {}", day, exhibit.black_tiles.len());
     }
     let part2 = exhibit.black_tiles.len() as u64;
     (part1,part2)
