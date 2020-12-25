@@ -4,7 +4,7 @@ pub fn day24(input_lines: &[String]) -> (u64, u64) {
     let mut exhibit = Exhibit::new();
     exhibit.parse_input(input_lines);
     let part1 = exhibit.black_tiles.len() as u64;
-    for day in 1..=100 {
+    for _ in 1..=100 {
         exhibit.apply_day_process();
     }
     let part2 = exhibit.black_tiles.len() as u64;
